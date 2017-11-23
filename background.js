@@ -1,29 +1,23 @@
-var notificationMessage = "Hey buddy, You should drink some water.";
-var notificationTitle = "Stay hidrated!";
-var timeInterval = 15; 
-// var timeInterval = 0.5;
+var target = "<all_urls>";
+var httpText="";
+/*
+e.g.
+"https://developer.mozilla.org/en-US/"
+200
 
-restartAlarms();
-browser.runtime.onMessage.addListener(handleMessage);
+or:
 
-function handleMessage(request, sender, sendResponse) {
-  console.log(" Time: " + request.time);
-  timeInterval= request.time; 
-  // timeInterval= request.time/30;
-  sendResponse({response: "Time received successfully"});
-  restartAlarms();
+"https://developer.mozilla.org/en-US/xfgkdkjdfhs"
+404
+*/
+function logResponse(response) {
+  httpText = "Request Method: " + response.method + "\nStatus Code: " + response.statusCode + "\nStatus line:" + response.statusLine + 
+  "\nIP Address: " + response.ip + "\nResponse Headers: " +
+  response.responseHeaders + "\nTimeStamp: "+ response.timeStamp + "\nTarget Url:" + response.url + "\nResponse type: "+ response.type;  
+  console.log(httpText);
 }
 
-browser.alarms.onAlarm.addListener(function(alarm) {
-	browser.notifications.create("waterNotification",{
-	  "type": "basic",
-	  "iconUrl": "icons/bottle.png",
-	  "title": notificationTitle,
-	  "message": notificationMessage
-	});
-});
-
-function restartAlarms(){
-	browser.alarms.clearAll();
-	browser.alarms.create("waterReminder", {periodInMinutes: timeInterval});	
-}
+browser.webRequest.onCompleted.addListener(
+  logResponse,
+  {urls: [target]}
+);

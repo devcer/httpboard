@@ -1,20 +1,20 @@
 {
 
   "manifest_version": 2,
-  "name": "Hydrator",
-  "version": "1.0",
+  "name": "Http board",
+  "version": "2.0",
   "description": "A beautiful Firefox browser addon to remind you to drink water while enjoying browsing.",
   "icons": {
-    "48": "icons/bottle.png"
+    "48": "icons/http.png"
   },
   "browser_action": {
-    "default_icon": "icons/bottle.png",
-    "default_title": "Set timegap",
-    "default_popup": "popup/popup.html"
+    "default_icon": "icons/http.png",
+    "default_title": "Open Http Board"
   },
   "permissions": [
-    "notifications",
-    "alarms"
+    "webRequest",
+    "webRequestBlocking",
+    "<all_urls>"
   ],
   "background": {
     "scripts": ["background.js"]
