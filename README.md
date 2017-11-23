@@ -1,2 +1,2 @@
-# hydrator
-A beautiful Firefox browser addon to remind you to drink water while enjoying browsing.
+# httpboard
+A Firefox browser addon which gives you the details of recent http calls
