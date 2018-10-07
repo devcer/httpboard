@@ -3,7 +3,7 @@
   "manifest_version": 2,
   "name": "Http board",
   "version": "2.0",
-  "description": "A beautiful Firefox browser addon to remind you to drink water while enjoying browsing.",
+  "description": "A Firefox browser add-on which gives you the details of recent http calls",
   "icons": {
     "48": "icons/http.png"
   },
